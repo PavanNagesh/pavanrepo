@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithmic Problem-Solving Techniques</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Algorithmic Problem-Solving Techniques</h1>
+    </div>
+
+    <div class="box">
+      <h2>1. Problems in Nature</h2>
+      <div class="content">
+        <p><strong class="highlight">Iteration</strong> - Repeats steps in a loop until the job is done.</p>
+        <p class="example"><strong>Example:</strong> Walking steps, tapping a drumstick to a rhythm.</p>
+
+        <p><strong class="highlight">Recursion</strong> - Solves a problem by breaking it into smaller steps.</p>
+        <p class="example"><strong>Example:</strong> Solving a puzzle by dividing it into smaller pieces.</p>
+
+        <p><strong class="highlight">Backtracking</strong> - Uses trial and error to find solutions.</p>
+        <p class="example"><strong>Example:</strong> Solving a Sudoku puzzle by trying different placements.</p>
+
+        <p><strong class="highlight">Divide and Conquer</strong> - Splits data or tasks into smaller parts, solving them, and combining results.</p>
+        <p class="example"><strong>Example:</strong> Merge Sort, Quick Sort.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>2. Space and Time Efficiency</h2>
+      <div class="content">
+        <p><strong class="highlight">Space Efficiency</strong> - How much memory an algorithm uses.</p>
+        <p class="example"><strong>Example:</strong> Using an array to store data instead of a linked list to save space.</p>
+
+        <p><strong class="highlight">Time Efficiency</strong> - How fast an algorithm runs.</p>
+        <p class="example"><strong>Example:</strong> Binary search (O(log n)) is faster than linear search (O(n)).</p>
+
+        <table>
+          <tr>
+            <th>Order</th>
+            <th>Time</th>
+            <th>Space</th>
+          </tr>
+          <tr>
+            <td>O(1)</td>
+            <td>Array access</td>
+            <td>Single variable</td>
+          </tr>
+          <tr>
+            <td>O(log n)</td>
+            <td>Binary search</td>
+            <td>Recursive stack</td>
+          </tr>
+          <tr>
+            <td>O(n)</td>
+            <td>Loop through list</td>
+            <td>Storing list</td>
+          </tr>
+          <tr>
+            <td>O(n log n)</td>
+            <td>Merge Sort</td>
+            <td>Auxiliary space</td>
+          </tr>
+          <tr>
+            <td>O(n²)</td>
+            <td>Bubble Sort</td>
+            <td>2D matrix</td>
+          </tr>
+          <tr>
+            <td>O(2^n)</td>
+            <td>Brute force</td>
+            <td>Storing subsets</td>
+          </tr>
+          <tr>
+            <td>O(n!)</td>
+            <td>Generating permutations</td>
+            <td>Storing permutations</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>3. Design Principles</h2>
+      <div class="content">
+        <p><strong class="highlight">Shortest Path Trees</strong> - Finds the most efficient routes.</p>
+        <p class="example"><strong>Example:</strong> GPS routing for finding the quickest path between two locations.</p>
+
+        <p><strong class="highlight">Partitioning</strong> - Breaks complex problems into manageable segments.</p>
+        <p class="example"><strong>Example:</strong> Quicksort divides a list into smaller sublists to sort more easily.</p>
+
+        <p><strong class="highlight">Balancing and Rotations</strong> - Maintains data structure performance.</p>
+        <p class="example"><strong>Example:</strong> AVL trees perform rotations to stay balanced and guarantee efficient searching.</p>
+
+        <p><strong class="highlight">Edge Relaxation</strong> - Allows dynamic updating of path solutions.</p>
+        <p class="example"><strong>Example:</strong> In Dijkstra's algorithm, edge relaxation is used to continually improve the path to each node.</p>
+
+        <p><strong class="highlight">Level Order Traversal</strong> - Systematic, level-by-level exploration.</p>
+        <p class="example"><strong>Example:</strong> In BFS, all nodes at level 1 are explored before level 2, and so on.</p>
+
+        <p><strong class="highlight">Pruning</strong> - Eliminates unnecessary or invalid solution paths.</p>
+        <p class="example"><strong>Example:</strong> Pruning in the N-Queens problem prevents exploring invalid board states.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>4. Hierarchical Data Structures</h2>
+      <div class="content">
+        <p><strong class="highlight">Tree</strong> - Representing hierarchies (filesystems, organizations).</p>
+        <p class="example"><strong>Example:</strong> Directory structure of a computer's file system.</p>
+
+        <p><strong class="highlight">Binary Search Tree (BST)</strong> - Sorted data storage.</p>
+        <p class="example"><strong>Example:</strong> Binary search tree used in database indexing to quickly retrieve data.</p>
+
+        <p><strong class="highlight">AVL Tree</strong> - A self-balancing binary search tree.</p>
+        <p class="example"><strong>Example:</strong> Maintaining balance in a sorted tree for faster access in operations like search, insert, and delete.</p>
+
+        <p><strong class="highlight">Red-Black Tree</strong> - A balanced tree with dynamic restructuring.</p>
+        <p class="example"><strong>Example:</strong> Used in certain implementations of associative containers like maps and sets in C++ STL.</p>
+
+        <p><strong class="highlight">Heap</strong> - A specialized tree-based data structure for priority queues.</p>
+        <p class="example"><strong>Example:</strong> Heap used in heap sort and finding the top k largest elements in an array.</p>
+
+        <p><strong class="highlight">Trie</strong> - A tree-like structure that stores strings.</p>
+        <p class="example"><strong>Example:</strong> A trie is used in autocomplete features to efficiently find matching words from a dictionary.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>5. Array Query Algorithms</h2>
+      <div class="content">
+        <p><strong class="highlight">Why Needed</strong> - Efficient data access, optimized operations, and dynamic applications.</p>
+        <p class="example"><strong>Example:</strong> Fast lookup of elements in an array or processing queries on large datasets.</p>
+
+        <p><strong class="highlight">Applications</strong> - Range Queries, Dynamic Updates, Prefix Queries, Static Queries, and Pattern Matching.</p>
+        <p class="example"><strong>Example:</strong> A prefix sum array to quickly answer range sum queries.</p>
+
+        <p><strong class="highlight">Core Principles</strong> - Divide and Conquer, Preprocessing, Caching, Space-Time Tradeoff, Incremental Updates.</p>
+        <p class="example"><strong>Example:</strong> Using caching to store already computed results to speed up future computations.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>6. Trees and Graphs</h2>
+      <div class="content">
+        <p><strong class="highlight">Tree</strong> - Acyclic, connected structure with parent-child relationships.</p>
+        <p class="example"><strong>Example:</strong> Family tree or folder structure in a computer.</p>
+
+        <p><strong class="highlight">Graph</strong> - A collection of nodes connected by edges. Can be cyclic or disconnected.</p>
+        <p class="example"><strong>Example:</strong> Social networks, where each user is a node and connections are edges.</p>
+
+        <p><strong class="highlight">Tree Traversals</strong> - Pre-order, In-order, Post-order, and Level-order (BFS).</p>
+        <p class="example"><strong>Example:</strong> Traversing a decision tree for decision-making processes.</p>
+
+        <p><strong class="highlight">Graph Traversals</strong> - DFS (Depth-First Search) and BFS (Breadth-First Search).</p>
+        <p class="example"><strong>Example:</strong> Searching for the shortest path in a maze using BFS.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>7. Sorting and Searching Algorithms</h2>
+      <div class="content">
+        <p><strong class="highlight">Sorting Algorithms</strong> - Bubble Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort.</p>
+        <p class="example"><strong>Example:</strong> Sorting an array of student names in alphabetical order using Quick Sort.</p>
+
+        <p><strong class="highlight">Searching Algorithms</strong> - Linear Search, Binary Search, Hashing, DFS, BFS.</p>
+        <p class="example"><strong>Example:</strong> Searching for a specific product in an online store using binary search on sorted product IDs.</p>
+
+        <p><strong class="highlight">Complexities</strong> - O(n²) for Bubble Sort, O(n log n) for Merge/Quick Sort, O(log n) for Binary Search, O(1) for Hashing.</p>
+        <p class="example"><strong>Example:</strong> Merge Sort is faster than Bubble Sort for large datasets.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>8. Graph Algorithms: Spanning Trees and Shortest Paths</h2>
+      <div class="content">
+        <p><strong class="highlight">Spanning Trees</strong> - Connects all nodes with the fewest edges.</p>
+        <p class="example"><strong>Example:</strong> Kruskal’s algorithm to find the minimum spanning tree in a network of roads.</p>
+
+        <p><strong class="highlight">Applications</strong> - Network Design, Cluster Analysis, Circuit Design.</p>
+        <p class="example"><strong>Example:</strong> Minimum Spanning Tree algorithms are used in designing efficient networks.</p>
+
+        <p><strong class="highlight">Shortest Path Algorithms</strong> - Dijkstra's, Bellman-Ford, A*.</p>
+        <p class="example"><strong>Example:</strong> Dijkstra's algorithm to find the shortest path between two cities in a road network.</p>
+
+        <p><strong class="highlight">Applications</strong> - Navigation, Telecommunication, Logistics.</p>
+        <p class="example"><strong>Example:</strong> A* algorithm used in pathfinding for video games or robotics.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>9. Algorithm Design Techniques</h2>
+      <div class="content">
+        <p><strong class="highlight">Brave and Cautious Travel</strong> - DFS (brave) vs BFS (cautious).</p>
+        <p class="example"><strong>Example:</strong> DFS in maze solving explores deeper, while BFS explores level by level.</p>
+
+        <p><strong class="highlight">Pruning</strong> - Cuts unnecessary solution paths.</p>
+        <p class="example"><strong>Example:</strong> Pruning in decision trees prevents evaluating fruitless branches.</p>
+
+        <p><strong class="highlight">Lazy Propagation</strong> - Delays updates until necessary.</p>
+        <p class="example"><strong>Example:</strong> Lazy propagation in segment trees ensures efficient updates in range queries.</p>
+
+        <p><strong class="highlight">Level Order Traversal</strong> - Visits tree nodes level by level.</p>
+        <p class="example"><strong>Example:</strong> BFS traversal in social networks to explore friends of friends.</p>
+
+        <p><strong class="highlight">Edge Relaxation</strong> - Updates paths dynamically during graph traversal.</p>
+        <p class="example"><strong>Example:</strong> Edge relaxation in Bellman-Ford algorithm to find the shortest path.</p>
+
+        <p><strong class="highlight">Balancing and Rotations</strong> - Maintains balanced data structures.</p>
+        <p class="example"><strong>Example:</strong> Red-Black trees perform rotations for efficient search and insertion.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+
+
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header h1 {
+  text-align: center;
+  font-size: 32px;
+  color: rgb(140, 62, 213);
+  margin-bottom: 20px;
+}
+
+.box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: rgb(142, 115, 197);
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 15px;
+}
+
+.example {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: rgb(88, 191, 226);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #a9cddf;
+}
+
+table td {
+  background-color: #fafafa;
+}
+
+</style>
+
+
+
+
+
+
+
+

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithmic Problem - Solving Techniques</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .qa {
+            background: rgba(40, 44, 52, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .qa:hover {
+            transform: scale(1.05);
+            background: rgba(60, 64, 72, 0.9);
+        }
+
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Custom cursor */
+        * {
+            cursor: url('https://cur.cursors-4u.net/others/oth-10/oth934.cur'), auto;
+        }
+
+        /* Interactive Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(100, 149, 237, 0.5);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="bubble" style="width: 50px; height: 50px; left: 10%; animation-duration: 12s;"></div>
+        <div class="bubble" style="width: 30px; height: 30px; left: 25%; animation-duration: 15s;"></div>
+        <div class="bubble" style="width: 70px; height: 70px; left: 50%; animation-duration: 10s;"></div>
+        <div class="bubble" style="width: 40px; height: 40px; left: 75%; animation-duration: 8s;"></div>
+        <div class="bubble" style="width: 60px; height: 60px; left: 90%; animation-duration: 14s;"></div>
+    </div>
+
+    <h1>Algorithmic Problem - Solving Techniques</h1>
+
+    <div class="content">
+        <div class="qa">
+            <div class="question">1. What are the kinds of problems we see in the nature? (iteration, recursion, backtracking)</div>
+            <div class="answer">
+                <strong>Iteration</strong><br>
+                Compound Interest: Interest is calculated on the principal and accumulated interest from previous periods.<br>
+                Traffic Lights: A repeating cycle of red, yellow, and green lights directs the flow of traffic..<br>
+                Daily Step Counting: A fitness tracker continuously records steps taken throughout the day.<br>
+                Laundry Sorting: Clothes are repeatedly handled and grouped according to their characteristics.<br><br>
+                <strong>Recursion</strong><br>
+                Directory Size: Adds up folder sizes, including subfolders recursively.<br>
+                Fractals: Patterns repeat in smaller versions, such as snowflakes or tree branches.<br>
+                Matryoshka Dolls: Opening nested dolls, where each doll contains a smaller one.<br>
+                Calculating Taxes: Determines tax for nested categories.<br><br>
+                <strong>Backtracking</strong><br>
+                Crossword Puzzles: Fill words tentatively, backtrack if they don't fit.<br>
+                Travel Planning: Route testing, backtrack to explore alternatives when conflicts occur.<br>
+                Sudoku: Place a number, backtrack if it breaks the rules.<br>
+                Maze Navigation: Try a path, backtrack at dead ends.<br><br>
+                <strong>Divide and Conquer</strong><br>
+                Merging Records: Data is split, processed, and merged back.<br>
+                Sorting (Merge Sort): A list is split, sorted, and merged.<br>
+                Designing Buildings: A complex structure is broken into simpler sections.<br>
+                Video Compression: A video is split into smaller frames for processing.<br><br>
+                <strong>Greedy Algorithm</strong><br>
+                ATM Withdrawal: Withdraws money using the largest available denominations first.<br>
+                Activity Scheduling: The quickest-ending task is chosen to maximize efficiency.<br>
+                Packing a Backpack: The most valuable items that fit are packed.<br>
+                Toll Booth Change: Change is given using the fewest coins/bills.<br><br>
+                <strong>Dynamic Programming</strong><br>
+                Route Planning: GPS finds the best route by solving smaller segments.<br>
+                Fibonacci Sequence: Previously calculated numbers are stored.<br>
+                Shopping Discounts: The best combination of items and discounts is calculated.<br>
+                Game Scores: Previously analyzed game states are stored.<br><br>
+                <strong>Graph Algorithms</strong><br>
+                Dijkstra’s Algorithm (Shortest Path): Finds the quickest route between locations.<br>
+                Prim's/Kruskal's Algorithm (Minimum Spanning Tree): Connects nodes with minimal cost.<br>
+                Social Network Analysis: Finds connections between users.<br>
+                Water Distribution Systems: Designs efficient pipelines.<br><br>
+                <strong>Sorting Algorithms</strong><br>
+                Task Sorting: Tasks are organized by deadlines or importance.<br>
+                Ticket Sorting: Tickets are sorted by price or seat number.<br>
+                Library Book Arrangement: Books are organized alphabetically or by genre.<br>
+                Inventory Management: Products are sorted by expiry date.<br><br>
+                <strong>Searching Algorithms</strong><br>
+                Linear Search: Files are checked one by one.<br>
+                Binary Search: A sorted dataset is repeatedly halved.<br>
+                Finding a Song: A specific track is searched in a playlist.<br>
+                Shopping Online: A product is searched in an online store.<br>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">2. What is space and time efficiency? Why are they important? Explain the different class of problems and orders of growth.</div>
+            <div class="answer">
+                <strong>Space Efficiency</strong><br>
+                How much space an algorithm needs. Like packing a suitcase—you want to fit everything you need without using unnecessary space.<br><br>
+                <strong>Time Efficiency</strong><br>
+                How quickly an algorithm finishes. Like how fast you can pack that suitcase.<br><br>
+                <strong>Orders of Growth</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Class of Problem</th>
+                            <th>Order of Growth</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Constant Time</td>
+                            <td>O(1)</td>
+                            <td>Execution time does not depend on input size.</td>
+                            <td>Accessing an element in an array.</td>
+                        </tr>
+                        <tr>
+                            <td>Logarithmic Time</td>
+                            <td>O(log n)</td>
+                            <td>Time increases logarithmically with input size; problem size halves in each step.</td>
+                            <td>Binary search on a sorted array.</td>
+                        </tr>
+                        <tr>
+                            <td>Linear Time</td>
+                            <td>O(n)</td>
+                            <td>Time grows linearly with input size.</td>
+                            <td>Traversing a list.</td>
+                        </tr>
+                        <tr>
+                            <td>Linearithmic Time</td>
+                            <td>O(n log n)</td>
+                            <td>Combines linear and logarithmic growth; often seen in divide-and-conquer algorithms.</td>
+                            <td>Merge sort, Quick sort.</td>
+                        </tr>
+                        <tr>
+                            <td>Quadratic Time</td>
+                            <td>O(n²)</td>
+                            <td>Time grows quadratically with input size; often due to nested loops.</td>
+                            <td>Bubble sort, Matrix addition.</td>
+                        </tr>
+                        <tr>
+                            <td>Cubic Time</td>
+                            <td>O(n³)</td>
+                            <td>Time grows cubically with input size; common in algorithms with three nested loops.</td>
+                            <td>Matrix multiplication.</td>
+                        </tr>
+                        <tr>
+                            <td>Exponential Time</td>
+                            <td>O(2ⁿ)</td>
+                            <td>Time doubles with each additional input; impractical for large inputs.</td>
+                            <td>Solving the Tower of Hanoi, brute force combinatorial problems.</td>
+                        </tr>
+                        <tr>
+                            <td>Factorial Time</td>
+                            <td>O(n!)</td>
+                            <td>Time grows factorially; extremely high growth rate, often infeasible for large inputs.</td>
+                            <td>Generating all permutations of a set.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">3. Take away from different design principles from chapter 2</div>
+            <div class="answer">
+                <strong>Pruning Techniques</strong><br>
+                Concept: Avoiding unnecessary calculations to speed things up.<br>
+                Application: Used in Branch and Bound algorithms to cut off branches of the search tree that won't yield better results.<br>
+                Example: Solving the Knapsack Problem by discarding infeasible solutions early.<br>
+                Real-world Use: Reducing search space in AI applications like chess or pathfinding.<br><br>
+                <strong>Edge Relaxation</strong><br>
+                Concept: Gradually refine the estimates of the shortest paths in weighted graphs.<br>
+                Application: Core principle in Dijkstra’s Algorithm and Bellman-Ford Algorithm.<br>
+                Example: Iteratively updates the shortest distance from the source to all other vertices.<br>
+                Real-world Use: Optimizing routes in GPS navigation systems.<br><br>
+                <strong>Sets and Union-Find (Disjoint Set Union)</strong><br>
+                Concept: Efficiently handle dynamic connectivity queries in a set.<br>
+                Operations: Union to combine sets, and Find to check membership or determine the representative.<br>
+                Application: Kruskal’s Algorithm for Minimum Spanning Tree.<br>
+                Detecting cycles in undirected graphs.<br>
+                Real-world Use: Network connectivity and finding connected components in social networks.<br><br>
+                <strong>Traversal Techniques</strong><br>
+                Concept: Systematically explore all vertices and edges in a graph.<br>
+                Applications:
+                Breadth-First Search (BFS): Shortest path in unweighted graphs.<br>
+                Depth-First Search (DFS): Detecting cycles, topological sorting, and solving mazes.<br>
+                Real-world Use: Web crawling, social network analysis.<br><br>
+                <strong>Hashing</strong><br>
+                Concept: Maps data to a fixed-size table for efficient lookups.<br>
+                Principle: Minimizes collisions using methods like open addressing or chaining.<br>
+                Example: Hash function: h(k) = k mod m.<br>
+                Real-world Use: Database indexing, caching, and password verification.<br><br>
+                <strong>Prefix and Suffix</strong><br>
+                Concept: Use of prefix sums or suffix sums to preprocess data for rapid queries.<br>
+                Application:
+                Efficiently compute subarray sums, ranges, or solve pattern matching problems.<br>
+                Example: Longest Common Prefix (LCP) in string matching.<br>
+                Detecting cycles in undirected graphs.<br>
+                Real-world Use: Data compression, DNA sequencing.<br><br>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">4. The hierarchical data and how different tree data structures solve and optimize over the problem scenarios (tree, bst, avl, 2-3, red-black, heap, trie)</div>
+            <div class="answer">
+                <strong>Tree (General)</strong><br>
+                Concept: A hierarchical structure with nodes connected by edges.<br>
+                Advantages: Simple representation of parent-child relationships.<br>
+                Problem Solved: General-purpose hierarchical data modeling, e.g., file systems, organizational charts.<br>
+                Limitations: Lacks balance; inefficient for operations like search or insert in unstructured data.<br><br>
+                <strong>Binary Search Tree (BST)</strong><br>
+                Concept: A binary tree where the left child contains smaller values and the right child contains larger values than the parent.<br>
+                Advantages: Enables efficient search, insertion, and deletion (O(h), where h is the height).<br>
+                Problem Solved: Ordered data storage, dynamic set operations.<br>
+                Limitations: Becomes skewed (degraded to linked list) if data is not evenly distributed, leading to O(n) time complexity for operations.<br><br>
+                <strong>AVL Tree</strong><br>
+                Concept: A self-balancing binary search tree where the height difference between subtrees is at most 1.<br>
+                Advantages: Guaranteed O(log n) time complexity for search, insertion, and deletion.<br>
+                Problem Solved: Overcomes imbalance issues in BSTs, ideal for applications requiring balanced datasets.<br>
+                Limitations: Higher overhead for maintaining balance through rotations during insertion and deletion.<br><br>
+                <strong>2-3 Tree</strong><br>
+                Concept: A balanced search tree where nodes can have 2 or 3 children.<br>
+                Advantages: Ensures balance, supports efficient search, insertion, and deletion in O(log n).<br>
+                Problem Solved: Dynamically adjusting tree size for ordered data storage without skew.<br>
+                Limitations: More complex to implement compared to BST or AVL tree.<br><br>
+                <strong>Red-Black Tree</strong><br>
+                Concept: A self-balancing BST where nodes have an additional color attribute (red or black) with rules to ensure balance.<br>
+                Advantages: Balances the tree with fewer rotations than AVL trees; efficient for search, insert, and delete (O(log n)).<br>
+                Problem Solved: Dynamic datasets in systems like databases, associative arrays, and memory allocators.<br>
+                Limitations: More rotations than 2-3 trees in some cases; complex balancing rules.<br><br>
+                <strong>Heap</strong><br>
+                Concept: A binary tree-based structure satisfying the heap property:
+                Max-Heap: Parent node is greater than or equal to its children.
+                Min-Heap: Parent node is less than or equal to its children.<br>
+                Advantages: Efficient O(log n) insertion and deletion of max/min elements.<br>
+                Problem Solved: Priority queue implementations, scheduling problems.<br>
+                Limitations: Inefficient for general search operations (O(n)).<br><br>
+                <strong>Trie</strong><br>
+                Concept: A tree used for storing strings where nodes represent prefixes.<br>
+                Advantages: Fast search, insertion, and deletion (O(m), where m is the key length). Reduces storage for common prefixes.<br>
+                Problem Solved: Word dictionaries, autocomplete systems, IP routing.<br>
+                Limitations: Requires significant memory for sparse datasets.<br><br>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">5. The need of array query algorithms and their implications. Their applications and principles need to be discussed.</div>
+            <div class="answer">
+                <strong>Need for Array Query Algorithms</strong><br>
+                Efficient handling of large datasets with frequent queries.<br>
+                Real-time responses for operations like range sum, min/max, etc.<br>
+                Avoids recalculations, ensuring optimized performance.<br>
+                Critical for scenarios with frequent updates and dynamic datasets.<br><br>
+
+                <strong>Implications</strong><br>
+                Efficiency: Queries and updates in O(log n) or O(1) for optimized algorithms.<br>
+                Memory Trade-offs: Uses additional memory for precomputation (e.g., Segment Tree, Sparse Table).<br>
+                Scalability: Handles large-scale data efficiently.<br><br>
+
+                <strong>Key Algorithms</strong><br>
+                <ul>
+                    <li><strong>Sparse Table</strong>: Query: O(1), Static arrays, idempotent operations (min, max).</li>
+                    <li><strong>Segment Tree</strong>: Query/Update: O(log n), Dynamic data with range operations.</li>
+                    <li><strong>Fenwick Tree (BIT)</strong>: Query/Update: O(log n), Efficient prefix sums and point updates.</li>
+                    <li><strong>Range Minimum Query (RMQ)</strong>: Precomputed solutions for quick range min queries.</li>
+                </ul><br>
+
+                <strong>Applications</strong><br>
+                Competitive Programming: Range sums, min/max, GCD.<br>
+                Databases: Frequency tables, transaction logs.<br>
+                Financial Analysis: Interval-based computations.<br>
+                Gaming: Scoring systems, state updates.<br>
+                Scientific Computing: Aggregate operations for simulations.<br><br>
+
+                <strong>Principles</strong><br>
+                Divide and Conquer: Used in Segment Trees and Fenwick Trees.<br>
+                Precomputation: Sparse Table leverages precomputed values.<br>
+                Tree-Based Structures: Efficient representation for dynamic updates.<br>
+                Idempotent Operations: Exploited in RMQ and Sparse Table.<br><br>
+
+                <strong>Comparison</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Query Time</th>
+                            <th>Update Time</th>
+                            <th>Best Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sparse Table</td>
+                            <td>O(1)</td>
+                            <td>N/A</td>
+                            <td>Static range queries (no updates).</td>
+                        </tr>
+                        <tr>
+                            <td>Segment Tree</td>
+                            <td>O(log n)</td>
+                            <td>O(log n)</td>
+                            <td>Dynamic range queries and updates.</td>
+                        </tr>
+                        <tr>
+                            <td>Fenwick Tree</td>
+                            <td>O(log n)</td>
+                            <td>O(log n)</td>
+                            <td>Prefix sums and point updates.</td>
+                        </tr>
+                        <tr>
+                            <td>Range Minimum Query</td>
+                            <td>O(1)</td>
+                            <td>N/A</td>
+                            <td>Fixed arrays for minima/maxima.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">6. Differentiate between tree and graphs and their traversals. The applications of each</div>
+            <div class="answer">
+                <strong>Tree vs Graph</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Tree</th>
+                            <th>Graph</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Structure</td>
+                            <td>A connected acyclic graph with N−1 edges and N nodes.</td>
+                            <td>A collection of nodes (vertices) connected by edges.</td>
+                        </tr>
+                        <tr>
+                            <td>Connectivity</td>
+                            <td>Always connected.</td>
+                            <td>Can be connected or disconnected.</td>
+                        </tr>
+                        <tr>
+                            <td>Cycles</td>
+                            <td>No cycles allowed.</td>
+                            <td>Cycles may be present.</td>
+                        </tr>
+                        <tr>
+                            <td>Hierarchy</td>
+                            <td>Hierarchical structure with a root node.</td>
+                            <td>No strict hierarchy; can be cyclic.</td>
+                        </tr>
+                        <tr>
+                            <td>Edge Count</td>
+                            <td>N−1 for N nodes.</td>
+                            <td>Can have any number of edges.</td>
+                        </tr>
+                        <tr>
+                            <td>Traversal</td>
+                            <td>Limited to specific tree-based methods like Preorder, Inorder, Postorder.</td>
+                            <td>Includes Depth-First Search (DFS) and Breadth-First Search (BFS).</td>
+                        </tr>
+                        <tr>
+                            <td>Representation</td>
+                            <td>Typically stored using parent-child relationships.</td>
+                            <td>Represented using adjacency matrix or adjacency list.</td>
+                        </tr>
+                        <tr>
+                            <td>Applications</td>
+                            <td>Used where hierarchical relationships are required.</td>
+                            <td>Used to model networks and relationships.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">7. Deliberate on sorting and searching algorithms, the technique behind each and they connect to real world</div>
+            <div class="answer">
+                <strong>a) Tree vs. Graphs and Their Traversals</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Tree</th>
+                            <th>Graph</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definition</td>
+                            <td>A hierarchical structure with a root node and child nodes.</td>
+                            <td>A collection of nodes (vertices) connected by edges.</td>
+                        </tr>
+                        <tr>
+                            <td>Structure</td>
+                            <td>A connected, acyclic graph.</td>
+                            <td>Can have cycles, multiple connections, or be disconnected.</td>
+                        </tr>
+                        <tr>
+                            <td>Edges</td>
+                            <td>n−1 edges for n nodes.</td>
+                            <td>No fixed number of edges; can vary widely.</td>
+                        </tr>
+                        <tr>
+                            <td>Traversal Techniques</td>
+                            <td>- DFS (Preorder, Inorder, Postorder)</td>
+                            <td>- DFS (Depth-First Search)<br>- BFS (Breadth-First Search)</td>
+                        </tr>
+                        <tr>
+                            <td>Applications</td>
+                            <td>- Represent hierarchical data (e.g., file systems, organization charts).<br>- Binary search trees for efficient data search.</td>
+                            <td>- Model networks (e.g., social, transportation, computer).<br>- Shortest path problems, spanning trees.</td>
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                <strong>Applications of Trees</strong><br>
+                Binary Search Trees: Efficient searching, insertion, and deletion (O(log n)).<br>
+                AVL Trees: Balanced trees for maintaining sorted data.<br>
+                Tries: Word dictionaries and autocomplete systems.<br>
+                Heap Trees: Priority queues, scheduling.<br>
+                Decision Trees: Machine learning models.<br><br>
+
+                <strong>Applications of Graphs</strong><br>
+                Social Networks: Analyzing relationships and connections.<br>
+                Transport Networks: Shortest path algorithms for routing.<br>
+                Web Crawling: Mapping connections between web pages.<br>
+                Electric Networks: Spanning tree algorithms for optimization.<br><br>
+
+                <strong>b) Sorting and Searching Algorithms</strong><br><br>
+
+                <strong>Sorting Algorithms</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Technique</th>
+                            <th>Real-World Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bubble Sort</td>
+                            <td>Swap adjacent elements repeatedly.</td>
+                            <td>Teaching basic sorting; simple datasets.</td>
+                        </tr>
+                        <tr>
+                            <td>Selection Sort</td>
+                            <td>Select minimum and place in order.</td>
+                            <td>Small, simple datasets.</td>
+                        </tr>
+                        <tr>
+                            <td>Insertion Sort</td>
+                            <td>Build sorted array one element at a time.</td>
+                            <td>Sorting playing cards; partially sorted data.</td>
+                        </tr>
+                        <tr>
+                            <td>Merge Sort</td>
+                            <td>Divide-and-conquer; merge sorted halves.</td>
+                            <td>External sorting (large files, databases).</td>
+                        </tr>
+                        <tr>
+                            <td>Quick Sort</td>
+                            <td>Divide-and-conquer; partitioning around pivot.</td>
+                            <td>High-performance in-memory sorting.</td>
+                        </tr>
+                        <tr>
+                            <td>Heap Sort</td>
+                            <td>Use heap data structure for sorting.</td>
+                            <td>Priority queue operations; event management.</td>
+                        </tr>
+                         <tr>
+                            <td>Radix Sort</td>
+                            <td>Non-comparative, digit-based sorting.</td>
+                            <td>Sorting large numbers (e.g., ZIP codes, IDs).</td>
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                <strong>Searching Algorithms</strong><br>
+                <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Technique</th>
+                            <th>Real-World Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linear Search</td>
+                            <td>Sequentially check each element.</td>
+                            <td>Small datasets or unsorted arrays.</td>
+                        </tr>
+                        <tr>
+                            <td>Binary Search</td>
+                            <td>Divide-and-conquer; requires sorted array.</td>
+                            <td>Search in sorted datasets (e.g., phonebooks).</td>
+                        </tr>
+                        <tr>
+                            <td>Hash-Based Search</td>
+                            <td>Use hash tables for constant-time lookups.</td>
+                            <td>Databases, caching, and indexing.</td>
+                        </tr>
+                        <tr>
+                            <td>Depth-First Search (DFS)</td>
+                            <td>Explore all paths from a source node.</td>
+                            <td>Pathfinding, detecting cycles in graphs.</td>
+                        </tr>
+                        <tr>
+                            <td>Breadth-First Search (BFS)</td>
+                            <td>Explore all neighbors of a node first.</td>
+                            <td>Shortest path, web crawlers.</td>
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                <strong>Real-World Connections</strong><br>
+                <strong>Sorting Algorithms:</strong><br>
+                E-commerce platforms: For displaying sorted results (e.g., product listings by price or rating).<br>
+                Search engines: To rank search results based on relevance.<br>
+                Financial systems: For sorting transactions, stock data, or financial reports.<br><br>
+
+                <strong>Searching Algorithms:</strong><br>
+                Search engines: For keyword lookups and retrieving relevant pages.<br>
+                Database indexing: To enable efficient query execution and faster data retrieval.<br>
+                AI and gaming: For finding optimal moves or paths in scenarios like chess or pathfinding algorithms.<br>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">8. Discuss the importance of graph algorithms with respect to spanning trees and shortest paths</div>
+            <div class="answer">
+                <strong>a) Spanning Trees</strong><br>
+                A spanning tree is a subgraph of a graph that connects all the vertices with the minimum number of edges, ensuring no cycles. Algorithms like Kruskal's and Prim's focus on constructing minimum spanning trees (MSTs), which are particularly valuable in optimizing networks.<br><br>
+
+                <strong>Importance of Spanning Trees</strong><br>
+                Network Design: Spanning trees are critical in designing efficient network infrastructures like computer networks, telecommunications, and electrical grids. They minimize the total cost of connecting all nodes while ensuring redundancy is avoided.<br>
+                Data Clustering: MSTs help in clustering data points by forming groups based on minimum connections.<br>
+                Approximation Algorithms: Many approximation algorithms for complex problems, like the Traveling Salesman Problem (TSP), use MSTs as a foundation for finding near-optimal solutions.<br>
+                Redundancy Analysis: By analyzing the edges excluded from an MST, engineers can identify potential redundancy or alternative paths in the network.<br><br>
+
+                <strong>b) Shortest Paths</strong><br>
+                Shortest path algorithms, like Dijkstra’s, Bellman-Ford, and Floyd-Warshall, determine the shortest route between nodes in a weighted graph. These algorithms have significant theoretical and practical importance.<br><br>
+
+                <strong>Importance of Shortest Paths</strong><br>
+                Navigation and Routing: These algorithms are fundamental in GPS and mapping systems to calculate optimal routes in road networks.<br>
+                Transportation and Logistics: In supply chain management, shortest path algorithms optimize the movement of goods and reduce transportation costs.<br>
+                Telecommunication: Routing protocols in computer networks, such as OSPF (Open Shortest Path First), use shortest path algorithms to establish efficient data transmission paths.<br>
+                Game Development: In AI for games, shortest path algorithms are used to enable non-player characters to navigate game environments realistically.<br><br>
+
+                <strong>Interconnection Between Spanning Trees and Shortest Paths</strong><br>
+                Both spanning trees and shortest paths often rely on similar graph structures and properties, such as edge weights and connectivity.<br>
+                Algorithms for MSTs, like Kruskal's, often contribute to preprocessing in shortest path problems to eliminate unnecessary connections or reduce the graph's complexity.<br>
+                In real-world scenarios like urban planning, the combination of spanning tree methods and shortest path algorithms provides comprehensive solutions to optimize infrastructure while ensuring efficiency.<br>
+            </div>
+        </div>
+
+        <div class="qa">
+            <div class="question">9. Discuss about the different studied algorithm design techniques.</div>
+            <div class="answer">
+                <strong>a) Divide and Conquer</strong><br>
+                This technique involves dividing a problem into smaller subproblems, solving them independently, and combining their solutions to address the original problem.<br>
+                <strong>Steps:</strong><br>
+                Divide: Split the problem into smaller subproblems.<br>
+                Conquer: Solve each subproblem recursively.<br>
+                Combine: Merge the solutions of the subproblems.<br>
+                <strong>Examples:</strong><br>
+                Merge Sort: Divides the array into halves, sorts each recursively, and merges the results.<br>
+                Quick Sort: Divides based on a pivot element and recursively sorts the partitions.<br>
+                Binary Search: Recursively divides the search space in half.<br>
+                <strong>Applications:</strong><br>
+                Sorting algorithms<br>
+                Numerical computations like Fast Fourier Transform (FFT)<br><br>
+
+                <strong>b) Dynamic Programming (DP)</strong><br>
+                Dynamic programming solves problems by breaking them into overlapping subproblems and storing their results to avoid redundant computations.<br>
+                <strong>Characteristics:</strong><br>
+                Utilizes a table to store intermediate results.<br>
+                Requires optimal substructure and overlapping subproblems.<br>
+                <strong>Examples:</strong><br>
+                Fibonacci Sequence: Stores previous terms to compute the next term efficiently.<br>
+                Knapsack Problem: Finds the maximum value within weight constraints.<br>
+                Longest Common Subsequence (LCS): Finds the length of the longest subsequence common to two strings.<br>
+                <strong>Applications:</strong><br>
+                Optimization problems in operations research<br>
+                Bioinformatics (e.g., sequence alignment)<br>
+                Game theory<br><br>
+
+                <strong>c) Greedy Algorithms</strong><br>
+                Greedy algorithms make a series of choices, each of which looks best at the moment, with the hope of finding the global optimum.<br>
+                <strong>Characteristics:</strong><br>
+                Does not backtrack or reconsider earlier choices.<br>
+                Works well for problems with the greedy-choice property and optimal substructure.<br>
+                <strong>Examples:</strong><br>
+                Kruskal's and Prim's Algorithms: Construct minimum spanning trees.<br>
+                Huffman Encoding: Builds an optimal binary prefix code for data compression.<br>
+                Activity Selection Problem: Selects the maximum number of activities that don’t overlap.<br>
+                <strong>Applications:</strong><br>
+                Network design<br>
+                Resource allocation<br>
+                Scheduling problems<br><br>
+
+                <strong>d) Backtracking</strong><br>
+                Backtracking systematically explores all possible solutions by building them incrementally and abandoning solutions that fail to satisfy constraints.<br>
+                <strong>Steps:</strong><br>
+                Choose: Pick an option.<br>
+                Explore: Recur to see if the option leads to a solution.<br>
+                Unchoose: Backtrack if the choice does not work.<br>
+                <strong>Examples:</strong><br>
+                N-Queens Problem: Places queens on a chessboard so that no two threaten each other.<br>
+                Sudoku Solver: Fills numbers while adhering to rules.<br>
+                Subset Sum Problem: Finds subsets of a set that add up to a target.<br>
+                <strong>Applications:</strong><br>
+                Constraint satisfaction problems<br>
+                Combinatorial optimization<br>
+                Puzzle solving<br><br>
+
+                <strong>e) Branch and Bound</strong><br>
+                Branch and bound is a refinement of backtracking that uses bounds to prune portions of the search space that cannot yield optimal solutions.<br>
+                <strong>Key Features:</strong><br>
+                Maintains a global bound to limit exploration.<br>
+                Often used for optimization problems.<br>
+                <strong>Examples:</strong><br>
+                Traveling Salesman Problem (TSP): Prunes routes that exceed the current best route length.<br>
+                Integer Linear Programming: Solves optimization problems involving integer variables.<br>
+                <strong>Applications:</strong><br>
+                Combinatorial optimization<br>
+                Integer programming<br>
+                Network flow problems<br><br>
+
+                <strong>f) Randomized Algorithms</strong><br>
+                Randomized algorithms use random numbers to influence their behavior and make decisions during execution.<br>
+                <strong>Characteristics:</strong><br>
+                Can be Las Vegas (always correct, but runtime varies) or Monte Carlo (runtime is fixed, but correctness may vary).<br>
+                Often simpler and faster than deterministic counterparts.<br>
+                <strong>Examples:</strong><br>
+                Randomized Quick Sort: Uses a random pivot to reduce worst-case scenarios.<br>
+                Monte Carlo Simulations: Simulates systems to predict outcomes.<br>
+                Probabilistic Primality Testing: Tests whether a number is prime.<br>
+                <strong>Applications:</strong><br>
+                Cryptography<br>
+                Approximation algorithms<br>
+                Large-scale simulations<br><br>
+
+                <strong>g) Approximation Algorithms</strong><br>
+                Approximation algorithms find solutions close to the optimal one, particularly for problems where finding the exact solution is computationally infeasible.<br>
+                <strong>Key Features:</strong><br>
+                Provides a guarantee on how close the solution is to the optimal.<br>
+                Used for NP-hard problems.<br>
+                <strong>Examples:</strong><br>
+                Traveling Salesman Problem (TSP): Provides near-optimal routes.<br>
+                Vertex Cover: Finds a subset of vertices that covers all edges.<br>
+                <strong>Applications:</strong><br>
+                Resource scheduling<br>
+                Network optimization<br>
+                Operations research<br><br>
+
+                <strong>h) Brute Force</strong><br>
+                The brute force method involves exhaustively enumerating all possible solutions and selecting the best one.<br>
+                <strong>Characteristics:</strong><br>
+                Simple and guarantees correctness but is computationally expensive.<br>
+                Used as a baseline for evaluating other algorithms.<br>
+                <strong>Examples:</strong><br>
+                Exhaustive search for finding all subsets of a set.<br>
+                Generating permutations to solve the TSP.<br>
+                <strong>Applications:</strong><br>
+                Small-scale problems<br>
+                Problems with no efficient solution<br><br>
+
+                <strong>i) Recursive Algorithms</strong><br>
+                Recursive algorithms solve problems by calling themselves with modified input, often relying on base cases to terminate.<br>
+                <strong>Examples:</strong><br>
+                Tower of Hanoi: Moves disks between rods recursively.<br>
+                Factorial Calculation: Computes n! using n × (n-1)!.<br>
+                <strong>Applications:</strong><br>
+                Problems with a natural recursive structure (e.g., tree traversal).<br>
+                Divide and conquer algorithms.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
