@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code Display</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='Rectangle_1' fill='%23252525'%3E%3Crect x='0' y='0' width='42' height='44'/%3E%3C/g%3E%3Cpath d='M6 32h12v-4H6v4zm16 0h12v-4h-12v4zm-16-12h12v-4H6v4zm16 0h12v-4h-12v4z' fill='%23343434'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .code-container {
+            background-color: #282c34;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
+            max-width: 80%;
+        }
+        pre {
+            white-space: pre-wrap;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .comment { color: #6a9955; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        .operator { color: #e06c75; }
+        .preprocessor { color: #56b6c2; }
+        .type { color: #61afef; }
+        .function { color: #e5c07b; }
+    </style>
+</head>
+<body>
+
+    <div class="code-container">
+        <pre>
+<span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;vector&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;algorithm&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;climits&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;functional&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;map&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;set&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;queue&gt;</span>
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> std;
+
+<span class="keyword">struct</span> <span class="type">Edge</span> {
+    <span class="type">string</span> src, dest;
+    <span class="type">int</span> weight;
+};
+
+<span class="keyword">struct</span> <span class="type">Situation</span> {
+    <span class="type">string</span> description;
+    <span class="type">int</span> intensity;
+};
+
+<span class="keyword">class</span> <span class="type">Graph</span> {
+    <span class="type">vector</span>&lt;<span class="type">string</span>&gt; vertices;
+    <span class="type">vector</span>&lt;<span class="type">Edge</span>&gt; edges;
+    <span class="type">set</span>&lt;<span class="type">pair</span>&lt;<span class="type">string</span>, <span class="type">string</span>&gt;&gt; mstEdges;
+
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> <span class="function">addVertex</span>(<span class="keyword">const</span> <span class="type">string</span>& vertex) {
+        vertices.push_back(vertex);
+    }
+
+    <span class="keyword">void</span> <span class="function">addEdge</span>(<span class="keyword">const</span> <span class="type">string</span>& src, <span class="keyword">const</span> <span class="type">string</span>& dest, <span class="type">int</span> weight) {
+        edges.push_back({src, dest, weight});
+    }
+
+    <span class="type">int</span> <span class="function">getVertexIndex</span>(<span class="keyword">const</span> <span class="type">string</span>& vertex) <span class="keyword">const</span> {
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; vertices.size(); ++i) {
+            <span class="keyword">if</span> (vertices[i] == vertex) {
+                <span class="keyword">return</span> i;
+            }
+        }
+        <span class="keyword">return</span> <span class="number">-1</span>;
+    }
+
+    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; <span class="function">bellmanFordWithPath</span>(<span class="keyword">const</span> <span class="type">string</span>& src, <span class="keyword">const</span> <span class="type">string</span>& dest, <span class="type">bool</span> blockBF = <span class="keyword">false</span>) {
+        <span class="type">int</span> V = vertices.size();
+        <span class="type">int</span> srcIndex = <span class="function">getVertexIndex</span>(src);
+        <span class="type">int</span> destIndex = <span class="function">getVertexIndex</span>(dest);
+
+        <span class="keyword">if</span> (srcIndex == <span class="number">-1</span> || destIndex == <span class="number">-1</span>) {
+            <span class="keyword">return</span> {{}, <span class="number">-1</span>};
+        }
+
+        <span class="type">vector</span>&lt;<span class="type">int</span>&gt; dist(V, INT_MAX);
+        <span class="type">vector</span>&lt;<span class="type">int</span>&gt; prev(V, <span class="number">-1</span>);
+        dist[srcIndex] = <span class="number">0</span>;
+
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= V - <span class="number">1</span>; ++i) {
+            <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>& edge : edges) {
+                <span class="keyword">if</span> (blockBF && edge.src == <span class="string">"B"</span> && edge.dest == <span class="string">"F"</span>) <span class="keyword">continue</span>;
+
+                <span class="type">int</span> u = <span class="function">getVertexIndex</span>(edge.src);
+                <span class="type">int</span> v = <span class="function">getVertexIndex</span>(edge.dest);
+                <span class="type">int</span> weight = edge.weight;
+
+                <span class="keyword">if</span> (u != <span class="number">-1</span> && v != <span class="number">-1</span> && dist[u] != INT_MAX && dist[u] + weight &lt; dist[v]) {
+                    dist[v] = dist[u] + weight;
+                    prev[v] = u;
+                }
+            }
+        }
+
+        <span class="type">vector</span>&lt;<span class="type">string</span>&gt; path;
+        <span class="type">int</span> current = destIndex;
+        <span class="keyword">while</span> (current != <span class="number">-1</span>) {
+            path.push_back(vertices[current]);
+            current = prev[current];
+        }
+        <span class="function">reverse</span>(path.begin(), path.end());
+
+        <span class="keyword">if</span> (path.empty() || path[<span class="number">0</span>] != src) <span class="keyword">return</span> {{}, <span class="number">-1</span>};
+
+        <span class="keyword">return</span> {path, dist[destIndex]};
+    }
+
+    <span class="keyword">void</span> <span class="function">kruskal</span>() {
+        // ... (kruskal implementation)
+    }
+
+    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; <span class="function">findPathInMST</span>(<span class="keyword">const</span> <span class="type">string</span>& start, <span class="keyword">const</span> <span class="type">string</span>& end) {
+        // ... (findPathInMST implementation)
+    }
+};
+
+<span class="keyword">void</span> <span class="function">quickSort</span>(<span class="type">vector</span>&lt;<span class="type">Situation</span>&gt;& situations, <span class="type">int</span> low, <span class="type">int</span> high) {
+    <span class="keyword">auto</span> partition = [&](<span class="type">int</span> low, <span class="type">int</span> high) {
+        <span class="type">int</span> pivot = situations[high].intensity;
+        <span class="type">int</span> i = low - <span class="number">1</span>;
+        <span class="keyword">for</span> (<span class="type">int</span> j = low; j &lt; high; ++j) {
+            <span class="keyword">if</span> (situations[j].intensity &gt; pivot) {
+                <span class="function">swap</span>(situations[++i], situations[j]);
+            }
+        }
+        <span class="function">swap</span>(situations[i + <span class="number">1</span>], situations[high]);
+        <span class="keyword">return</span> i + <span class="number">1</span>;
+    };
+
+    <span class="keyword">if</span> (low &lt; high) {
+        <span class="type">int</span> pi = partition(low, high);
+        <span class="function">quickSort</span>(situations, low, pi - <span class="number">1</span>);
+        <span class="function">quickSort</span>(situations, pi + <span class="number">1</span>, high);
+    }
+}
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">Graph</span> g;
+    g.addVertex(<span class="string">"Hospital"</span>);
+    g.addVertex(<span class="string">"A"</span>);
+    g.addVertex(<span class="string">"B"</span>);
+    g.addVertex(<span class="string">"C"</span>);
+    g.addVertex(<span class="string">"D"</span>);
+    g.addVertex(<span class="string">"E"</span>);
+    g.addVertex(<span class="string">"F"</span>);
+    g.addVertex(<span class="string">"Residential Area"</span>);
+
+    g.addEdge(<span class="string">"Hospital"</span>, <span class="string">"A"</span>, <span class="number">3</span>);
+    g.addEdge(<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="number">2</span>);
+    g.addEdge(<span class="string">"A"</span>, <span class="string">"D"</span>, <span class="number">4</span>);
+    g.addEdge(<span class="string">"B"</span>, <span class="string">"C"</span>, <span class="number">3</span>);
+    g.addEdge(<span class="string">"B"</span>, <span class="string">"F"</span>, <span class="number">4</span>);
+    g.addEdge(<span class="string">"D"</span>, <span class="string">"E"</span>, <span class="number">2</span>);
+    g.addEdge(<span class="string">"E"</span>, <span class="string">"F"</span>, <span class="number">1</span>);
+    g.addEdge(<span class="string">"F"</span>, <span class="string">"Residential Area"</span>, <span class="number">1</span>);
+    g.addEdge(<span class="string">"C"</span>, <span class="string">"Residential Area"</span>, <span class="number">4</span>);
+
+    cout &lt;&lt; <span class="string">"Running Kruskal's Algorithm (Quickest Path/MST):\n"</span>;
+    g.kruskal();
+
+    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; pathInfoMST = g.findPathInMST(<span class="string">"Hospital"</span>, <span class="string">"Residential Area"</span>);
+
+    <span class="keyword">if</span> (pathInfoMST.second != <span class="number">-1</span>) {
+        cout &lt;&lt; <span class="string">"\nShortest path from Hospital to Residential Area (using MST):\n"</span>;
+        <span class="keyword">for</span> (<span class="keyword">const</span> <span class="type">string</span>& vertex : pathInfoMST.first) {
+            cout &lt;&lt; vertex &lt;&lt; <span class="string">" -&gt; "</span>;
+        }
+        cout &lt;&lt; <span class="string">"\b\b\b    \n"</span>;
+        cout &lt;&lt; <span class="string">"Total time: "</span> &lt;&lt; pathInfoMST.second &lt;&lt; <span class="string">" minutes\n"</span>;
+    } <span class="keyword">else</span> {
+        cout &lt;&lt; <span class="string">"\nNo path found between Hospital and Residential Area in the MST.\n"</span>;
+    }
+
+    cout &lt;&lt; <span class="string">"\nRunning Bellman-Ford Algorithm (Normal Conditions):\n"</span>;
+    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; pathInfoBFNormal = g.bellmanFordWithPath(<span class="string">"Hospital"</span>, <span class="string">"Residential Area"</span>);
+    <span class="keyword">if</span> (pathInfoBFNormal.second != <span class="number">-1</span>) {
+        cout &lt;&lt; <span class="string">"Path: "</span>;
+        <span class="keyword">for</span> (<span class="keyword">const</span> <span class="type">string</span>& vertex : pathInfoBFNormal.first) {
+            cout &lt;&lt; vertex &lt;&lt; <span class="string">" -&gt; "</span>;
+        }
+        cout &lt;&lt; <span class="string">"\b\b\b    \n"</span>;
+        cout &lt;&lt; <span class="string">"Total time: "</span> &lt;&lt; pathInfoBFNormal.second &lt;&lt; <span class="string">" minutes\n"</span>;
+    } <span class="keyword">else</span> {
+        cout &lt;&lt; <span class="string">"No Path Found\n"</span>;
+    }
+
+    cout &lt;&lt; <span class="string">"\nRunning Bellman-Ford Algorithm (B-F Path Blocked - Emergency):\n"</span>;
+    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; pathInfoBFBlocked = g.bellmanFordWithPath(<span class="string">"Hospital"</span>, <span class="string">"Residential Area"</span>, <span class="keyword">true</span>);
+    <span class="keyword">if</span> (pathInfoBFBlocked.second != <span class="number">-1</span>) {
+        cout &lt;&lt; <span class="string">"Path: "</span>;
+        <span class="keyword">for</span> (<span class="keyword">const</span> <span class="type">string</span>& vertex : pathInfoBFBlocked.first) {
+            cout &lt;&lt; vertex &lt;&lt; <span class="string">" -&gt; "</span>;
+        }
+        cout &lt;&lt; <span class="string">"\b\b\b    \n"</span>;
+        cout &lt;&lt; <span class="string">"Total time: "</span> &lt;&lt; pathInfoBFBlocked.second &lt;&lt; <span class="string">" minutes\n"</span>;
+    } <span class="keyword">else</span> {
+        cout &lt;&lt; <span class="string">"No Path Found\n"</span>;
+    }
+
+    <span class="type">vector</span>&lt;<span class="type">Situation</span>&gt; situations = {
+        {<span class="string">"Travel from Hospital to Residential Area"</span>, <span class="number">10</span>},
+        {<span class="string">"Travel from Hospital to Industrial Area"</span>, <span class="number">5</span>},
+        {<span class="string">"Building Collapse at B"</span>, <span class="number">15</span>},
+        {<span class="string">"Flooding near F"</span>, <span class="number">12</span>}
+    };
+
+    <span class="function">quickSort</span>(situations, <span class="number">0</span>, situations.size() - <span class="number">1</span>);
+
+    cout &lt;&lt; <span class="string">"\nSituations sorted by intensity (Descending):\n"</span>;
+    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>& situation : situations) {
+        cout &lt;&lt; situation.description &lt;&lt; <span class="string">" - Intensity: "</span> &lt;&lt; situation.intensity &lt;&lt; <span class="string">"\n"</span>;
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre>
+    </div>
+
+</body>
+</html>
