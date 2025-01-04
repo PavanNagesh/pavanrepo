@@ -316,6 +316,38 @@
                         <a href="buscase2.html" class="btn-next">
                           <button>Next Business Case</button>
                         </a>
+                        body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Ensures the height of the screen */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
+
+.btn-next {
+  position: fixed; /* Stays at the bottom-right of the screen */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: white; /* White text */
+  padding: 15px 25px; /* Spacing inside the button */
+  font-size: 18px; /* Font size */
+  font-weight: bold; /* Bold text for emphasis */
+  text-decoration: none; /* Remove underline */
+  border: none; /* No border */
+  border-radius: 25px; /* Fully rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth zoom and shadow transition */
+}
+
+.btn-next:hover {
+  transform: scale(1.1); /* Zoom in slightly */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
                     </div>
                 </body>
                 </html>
