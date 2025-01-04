@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case 2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #283c4f, #1a242f);
+            color: #eee;
+            line-height: 1.6;
+            font-size: 1rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 40px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #64b5f6;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .algorithm {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .city-map {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        img {
+            max-width: 75%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .implementation-heading {
+            color: #bbdefb;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 500;
+        }
+
+        .code-container {
+            background-color: #282c34;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
+            margin: 1rem auto 3rem;
+            max-width: 1200px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.3;
+            font-family: 'Courier New', monospace;
+        }
+
+        .comment { color: #6a9955; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        .operator { color: #e06c75; }
+        .preprocessor { color: #56b6c2; }
+        .type { color: #61afef; }
+        .function { color: #e5c07b; }
+
+        .view-code-button {
+            display: block;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 10px auto;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .view-code-button:hover {
+            background-color: #45a049;
+            transform: scale(1.03);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .view-code-button:active{
+            transform: scale(0.97);
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .spacer {
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Business Case 2: Smart Utility Resource Management</h1>
+        <p>Smart Utility Resource Management focuses on optimizing the distribution and usage of critical utility resources such as water, electricity, and gas. By employing real-time monitoring and efficient routing, this system ensures the fair, effective, and sustainable allocation of resources, minimizing waste and maximizing utility service efficiency.</p>
+        
+        <h2>Description of the Problem</h2>
+        <p>Modern urban areas face several challenges:</p>
+        <ul>
+            <li>Unequal distribution of utilities leading to shortages in some areas and surplus in others.</li>
+            <li>Inefficient routing of resources due to outdated infrastructure or lack of optimization.</li>
+            <li>Increased utility costs and wastage due to manual intervention.</li>
+            <li>Inability to monitor real-time consumption patterns.</li>
+        </ul>
+        
+        <h2>Why Kruskal’s Algorithm and Red-Black Trees?</h2>
+        <h3>Kruskal’s Algorithm</h3>
+        <p>Use Case: Building a Minimum Spanning Tree (MST) to connect the utility nodes efficiently.<br>
+            - Use Case: Building a Minimum Spanning Tree (MST) to connect the utility nodes (e.g., water tanks, electricity hubs) efficiently while minimizing costs.<br>
+            - Justification:<br>
+                - Ensures the shortest and most efficient path for resource distribution.<br>
+              - Ideal for scenarios where the number of nodes (utility points) is fixed, as in your city design.<br>
+              - Reduces redundancy in connections, saving energy and operational costs.<br>
+
+        </p>
+        
+        <h3>Red-Black Trees</h3>
+        <p>Use Case: Real-time monitoring of resource allocation and retrieval of data.
+            - Use Case: Real-time monitoring of resource allocation and retrieval of data.
+            - Justification:
+            - Maintains a balanced tree structure for fast data access, insertion, and deletion.
+            - Guarantees O(log n) operations, which is crucial for handling large data sets generated by real-time monitoring.
+            - Helps prioritize resource allocation to critical areas by efficiently querying nodes.
+
+        </p>
+        
+        <h2>Sustainable Development Goals (SDGs) Alignment</h2>
+        <ul>
+            <li><strong>SDG 6:</strong> Clean Water and Sanitation
+                - 6.4.1: Change in water-use efficiency over time.
+                - 6.4.2: Level of water stress as a proportion of available resources.
+                </li>
+            <li><strong>SDG 7:</strong> Affordable and Clean Energy
+                - 7.1.1: Proportion of population with access to electricity.
+                - 7.3.1: Energy intensity measured by primary energy and GDP.
+                </li>
+            <li><strong>SDG 11:</strong> Sustainable Cities and Communities
+                - 11.2.1: Proportion of population with convenient access to public services.
+                - 11.3.1: Ratio of land consumption rate to population growth rate.
+                </li>
+        </ul>
+        
+        <div class="city-map">
+            <h2>City Map</h2>
+            <img src="fullmap.jpg" alt="City Map">
+        </div>
+    </div>
+    <div class="container">
+        <h2>Implementation in Your City Map</h2>
+        <h3>1. Mapping Nodes and Edges:</h3>
+        <p>- Each block or utility station in your map is a node.<br>- Connections between nodes represent edges weighted by factors like distance, resource cost, and infrastructure reliability.</p>
+        <h3>2. Constructing an MST Using Kruskal’s Algorithm:</h3>
+        <p>- The algorithm identifies the shortest path to connect all utility points with minimal costs.<br>- Example: Connecting water reservoirs (e.g., Nodes 12 and 15) to residential zones (e.g., Nodes 8 and 9) efficiently.</p>
+        <h3>3. Real-Time Monitoring with Red-Black Trees:</h3>
+        <p>- Each node is a dynamic entry in a Red-Black Tree.<br>- Data such as water level, electricity consumption, and fault alerts are logged in real time.<br>- Queries like “Which zone has the highest water demand?” or “Which area faces electricity overload?” are efficiently handled.</p>
+        <h3>Simulation of the System</h3>
+        <p><strong>Scenario 1:</strong> An electricity outage occurs in Zone 9.<br>- Using the MST, the system reroutes electricity from the nearest functional station (e.g., Node 14) to Zone 9.<br>- Real-time updates in the Red-Black Tree allow tracking the affected zone and prioritizing repairs.</p>
+        <p><strong>Scenario 2:</strong> Water supply management.<br>- The MST ensures efficient water distribution from reservoirs to residential areas.<br>- The Red-Black Tree identifies areas of overuse and triggers alerts for conservation.</p>
+        <h3>Conclusion</h3>
+        <p>By leveraging Kruskal’s Algorithm and Red-Black Trees, the project offers an innovative approach to urban resource management. The system addresses critical issues such as inefficiency, resource wastage, and real-time monitoring, aligning with global SDGs to promote sustainability and innovation.</p>
+    </div>
+</main>
+</body>
+</html>
+
+<div class="implementation-heading">Implementation</div>
+        <div class="code-container">
+            <pre>
+                <span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;vector&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;algorithm&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;climits&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;string&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;functional&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;map&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;set&gt;</span>
+                <span class="preprocessor">#include</span> <span class="string">&lt;queue&gt;</span>
+                
+                <span class="keyword">using</span> <span class="keyword">namespace</span> std;
+                
+                <span class="keyword">struct</span> <span class="type">Edge</span> {
+                    <span class="type">string</span> src, dest;
+                    <span class="type">int</span> weight;
+                };
+                
+                <span class="keyword">struct</span> <span class="type">Situation</span> {
+                    <span class="type">string</span> description;
+                    <span class="type">int</span> intensity;
+                };
+                
+                <span class="keyword">class</span> <span class="type">Graph</span> {
+                    <span class="type">vector</span>&lt;<span class="type">string</span>&gt; vertices;
+                    <span class="type">vector</span>&lt;<span class="type">Edge</span>&gt; edges;
+                    <span class="type">set</span>&lt;<span class="type">pair</span>&lt;<span class="type">string</span>, <span class="type">string</span>&gt;&gt; mstEdges;
+                
+                <span class="keyword">public</span>:
+                    <span class="keyword">void</span> <span class="function">addVertex</span>(<span class="keyword">const</span> <span class="type">string</span>& vertex) {
+                        vertices.push_back(vertex);
+                    }
+                
+                    <span class="keyword">void</span> <span class="function">addEdge</span>(<span class="keyword">const</span> <span class="type">string</span>& src, <span class="keyword">const</span> <span class="type">string</span>& dest, <span class="type">int</span> weight) {
+                        edges.push_back({src, dest, weight});
+                    }
+                
+                    <span class="type">int</span> <span class="function">getVertexIndex</span>(<span class="keyword">const</span> <span class="type">string</span>& vertex) <span class="keyword">const</span> {
+                        <span class="keyword">for</span> (<span class="type">int</span> i = 0; i &lt; vertices.size(); ++i) {
+                            <span class="keyword">if</span> (vertices[i] == vertex) {
+                                <span class="keyword">return</span> i;
+                            }
+                        }
+                        <span class="keyword">return</span> -1;
+                    }
+                
+                    <span class="type">pair</span>&lt;<span class="type">vector</span>&lt;<span class="type">string</span>&gt;, <span class="type">int</span>&gt; <span class="function">bellmanFordWithPath</span>(<span class="keyword">const</span> <span class="type">string</span>& src, <span class="keyword">const</span> <span class="type">string</span>& dest, <span class="type">bool</span> blockBF = <span class="keyword">false</span>) {
+                        // Existing Bellman-Ford code...
+                    }
+                };
+                
+                <span class="comment">// Additional Code: Kruskal's Algorithm and Red-Black Tree</span>
+                <span class="keyword">struct</span> <span class="type">Subset</span> {
+                    <span class="type">string</span> parent;
+                    <span class="type">int</span> rank;
+                };
+                
+                <span class="keyword">string</span> <span class="function">findParent</span>(map<string, Subset>& subsets, <span class="keyword">const</span> <span class="type">string</span>& node) {
+                    <span class="keyword">if</span> (subsets[node].parent != node) {
+                        subsets[node].parent = findParent(subsets, subsets[node].parent);
+                    }
+                    <span class="keyword">return</span> subsets[node].parent;
+                }
+                
+                <span class="keyword">void</span> <span class="function">kruskalMST</span>(<span class="type">const</span> <span class="type">vector</span>&lt;<span class="type">Edge</span>&gt;& edges, <span class="type">int</span> numNodes) {
+                    <span class="comment">// Kruskal's implementation...</span>
+                }
+                
+                <span class="keyword">class</span> <span class="type">RedBlackTree</span> {
+                    <span class="comment">// Red-Black Tree implementation...</span>
+                };
+                
+                <span class="keyword">int</span> <span class="function">main</span>() {
+                    <span class="comment">// Main function integrating Graph, Kruskal, and Red-Black Tree...</span>
+                }
+            </pre>
+            <a href="https://github.com/Bitchstien/prajwalrepo/blob/main/buscase.html" class="view-code-button">View Full Code</a>
+        </div>
+    </div>
+</body>
+</html>
